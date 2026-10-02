@@ -1,24 +1,26 @@
 import { Producer } from "./Producer";
+import {logger} from "../main";
+import { Donatable } from "../Interfaces/Donatable";
 
-export class Food {
+export class Food implements Donatable {
 
     private name: string;
 
     private category: string;
 
-    private kilograms: number;
+    private quantity: number;
 
-    private producers: Producer[] = [];
+    private producers: Producer;
 
     constructor(
         name: string,
         category: string,
-        kilograms: number,
-        producers: Producer[] = []
+        quantity: number,
+        producers: Producer
     ) {
         this.name = name;
         this.category = category;
-        this.kilograms = kilograms;
+        this.quantity = quantity;
         this.producers = producers;
     }
 
@@ -38,19 +40,51 @@ export class Food {
         this.category = category;
     }
 
-    public getKilograms(): number {
-        return this.kilograms;
+    public getquantity(): number {
+        return this.quantity;
     }
 
-    public setKilograms(kilograms: number): void {
-        this.kilograms = kilograms;
+    public setquantity(quantity: number): void {
+        this.quantity = quantity;
     }
 
-    public getProducers(): Producer[] {
-        return this.producers;
+    public getProducers(): void {
+         this.producers;
     }
 
     public setProducers(producers: Producer[]): void {
         this.producers = producers;
     }
+
+    public addQuantity(amount: number): void {
+        this.quantity += amount;
+    }
+
+    public removeQuantity(amount: number): void {
+        if (amount < 0) {
+            throw new Error("Invalid quantity to remove.");
+        }
+        this.quantity -= amount;
+    }
+
+    public showQuantity(): void {
+
+        logger(`===========================`);
+        logger(`INFORMATION FROM FOOD ${this.getName}`)
+        logger(`===========================`);
+        logger(`
+            Name: ${this.getName}
+            Category: ${this.getCategory}
+            Quantity: ${this.getquantity}
+            `);
+    }
+
+    public donate(quantity: number): void {
+        if (quantity <= 0) {
+            throw new Error("Invalid quantity to donate.");
+        }
+        
+    }
+
+    
 }
