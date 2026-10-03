@@ -1,6 +1,6 @@
 import { logger } from "../main";
 
-export abstract class Institutions {
+export class Institutions {
 
     private name: string;
     private addres: string;
@@ -12,7 +12,7 @@ export abstract class Institutions {
         this.peopleServed = peopleServed;
     }
 
-    // Getter e Setter do name
+    // Getter and Setter for name
     public getName(): string {
         return this.name;
     }
@@ -21,7 +21,7 @@ export abstract class Institutions {
         this.name = name;
     }
 
-    // Getter e Setter do addres
+    // Getter and Setter for addres
     public getAddres(): string {
         return this.addres;
     }
@@ -30,7 +30,7 @@ export abstract class Institutions {
         this.addres = addres;
     }
 
-    // Getter e Setter do peopleServed
+    // Getter and Setter for peopleServed
     public getPeopleServed(): number {
         return this.peopleServed;
     }

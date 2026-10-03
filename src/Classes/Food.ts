@@ -10,7 +10,7 @@ export class Food implements Donatable {
 
     private quantity: number;
 
-    private producers: Producer;
+    private producers: Producer[] = []
 
     constructor(
         name: string,
@@ -21,7 +21,7 @@ export class Food implements Donatable {
         this.name = name;
         this.category = category;
         this.quantity = quantity;
-        this.producers = producers;
+
     }
 
     public getName(): string {
@@ -52,8 +52,8 @@ export class Food implements Donatable {
          this.producers;
     }
 
-    public setProducers(producers: Producer[]): void {
-        this.producers = producers;
+    public setProducers(producers: Producer): void {
+        this.producers.push(producers);
     }
 
     public addQuantity(amount: number): void {

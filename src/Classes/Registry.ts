@@ -5,68 +5,16 @@ import {Food} from "./Food";
 
 
 export class Registry<T> {
-    private food: Food[] = [];
-    private producers: Producer[] = [];
-    private institutions: Institutions[] = [];
+    private items: T[] = [];
+   
 
-    public addFood(food: Food): void {
-        this.food.push(food);
+    public addItem(item: T): void{
+        this.items.push(item);
     }
 
-    public addProducer(producer: Producer): void {
-        this.producers.push(producer);
-    }
-
-    public addInstitution(institution: Institutions): void {
-        this.institutions.push(institution);
-    }
-
-    /*public listFood(): void {
-        for (const food of this.food) {
-            logger(`===========================`);
-            logger(`INFORMATION FROM FOOD ${food.getName()}`)
-            logger(`===========================`);
-            logger(`
-                Name: ${food.getName()}
-                Category: ${food.getCategory()}
-                Quantity: ${food.getquantity()}
-                `);
-        }
-    }
-
-    public listProducers(): void {
-        for (const producer of this.producers) {
-            logger(`===========================`);
-            logger(`INFORMATION FROM PRODUCER ${producer.getName()}`)
-            logger(`===========================`);
-            logger(`
-                Name: ${producer.getName()}
-                CPF: ${producer.getCPF()}
-                Quantity of food produced: ${producer.getFood()}
-                `);
-        }
-    }
-
-    public listInstitutions(): void {
-        for (const institution of this.institutions) {
-            logger(`===========================`);
-            logger(`INFORMATION FROM INSTITUTION ${institution.getName()}`)
-            logger(`===========================`);
-            logger(`
-                Name: ${institution.getName()}
-                Address: ${institution.getAddres()}
-                People Served: ${institution.getPeopleServed()}
-                `);
-        }
-    }
-
-    public findFoodByName(name: string): Food | undefined {
-        return this.food.find(food => food.getName() === name);
-    }*/
-
-    public list<T>(items: T[]): void {
-        for (const item of items) {
-            logger(item);
+    public listItems(): void {
+        for (const [index, item] of this.items.entries()) {
+            logger(`[${index + 1}] ${item}`);
         }
     }
 
