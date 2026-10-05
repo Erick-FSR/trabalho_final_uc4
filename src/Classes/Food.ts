@@ -79,6 +79,10 @@ export class Food implements Donatable {
             `);
     }
 
+    public toString(): string {
+        return `Name: ${this.name}, Category: ${this.category}, Quantity: ${this.quantity}`;
+    }
+
     public donate(quantity: number): void {
         if (quantity <= 0) {
             throw new Error("Invalid quantity to donate.");

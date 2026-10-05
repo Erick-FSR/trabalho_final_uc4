@@ -1,45 +1,35 @@
-import { logger } from "../main";
-
-export class Institutions {
-
-    private name: string;
-    private addres: string;
-    private peopleServed: number;
-
-    constructor(name: string, addres: string, peopleServed: number) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Institutions = void 0;
+class Institutions {
+    constructor(name, addres, peopleServed) {
         this.name = name;
         this.addres = addres;
         this.peopleServed = peopleServed;
     }
-
-    public toString(): string {
+    toString() {
         return `Name: ${this.name}, Address: ${this.addres}, People Served: ${this.peopleServed}`;
     }
-
     // Getter and Setter for name
-    public getName(): string {
+    getName() {
         return this.name;
     }
-
-    public setName(name: string): void {
+    setName(name) {
         this.name = name;
     }
-
     // Getter and Setter for addres
-    public getAddres(): string {
+    getAddres() {
         return this.addres;
     }
-
-    public setAddres(addres: string): void {
+    setAddres(addres) {
         this.addres = addres;
     }
-
     // Getter and Setter for peopleServed
-    public getPeopleServed(): number {
+    getPeopleServed() {
         return this.peopleServed;
     }
-
-    public setPeopleServed(peopleServed: number): void {
+    setPeopleServed(peopleServed) {
         this.peopleServed = peopleServed;
     }
 }
+exports.Institutions = Institutions;

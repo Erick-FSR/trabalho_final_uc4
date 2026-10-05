@@ -67,6 +67,10 @@ do {
                 `);
             switch (producerType) {
                 case "1":
+                    console.clear();
+                    logger(`===========================`);
+                    logger(`REGISTER A FAMILY FARMER`);
+                    logger(`===========================`);
                     const name = question(`Enter your name: `);
                     const CPF = question(`Enter your CPF: `);
                     const food = Number(question(`Enter the quantity of food produced: `));
@@ -74,9 +78,14 @@ do {
                     const familyFarmer = new FamilyFarmer(name, CPF, food, propertySize);
                     producerRegistry.addItem(familyFarmer);
                     logger(`Producer ${name} registered successfully!`);
+                    question(`Press ENTER to continue...`);
                     break;
 
                 case "2":
+                    console.clear();
+                    logger(`===========================`);
+                    logger(`REGISTER A COMMUNITY GARDEN PRODUCER`);
+                    logger(`===========================`);
                     const name2 = question(`Enter your name: `);
                     const CPF2 = question(`Enter your CPF: `);
                     const food2 = Number(question(`Enter the quantity of food produced: `));
@@ -84,11 +93,13 @@ do {
                     const communityGardenProducer = new ComunityGardenProducer(name2, CPF2, food2, volunteers);
                     producerRegistry.addItem(communityGardenProducer);
                     logger(`Producer ${name2} registered successfully!`);
+                    question(`Press ENTER to continue...`);
                     break;
             }
             break;
 
         case 2:
+            console.clear();
             logger(`===========================`);
             logger(`REGISTER AN INSTITUTION`);
             logger(`===========================`);
@@ -98,9 +109,11 @@ do {
             const institution = new Institutions(institutionName, institutionAddress, institutionCapacity);
             institutionRegistry.addItem(institution);
             logger(`Institution ${institutionName} registered successfully!`);
+            question(`Press ENTER to continue...`);
             break;
 
         case 3:
+            console.clear();
             logger(`===========================`);
             logger(`REGISTER A FOOD`);
             logger(`===========================`);
@@ -111,27 +124,58 @@ do {
             const food = new Food(foodName, foodCategory, foodQuantity, foodProducer);
             foodRegistry.addItem(food);
             logger(`Food ${foodName} registered successfully!`);
+            question(`Press ENTER to continue...`);
             break;
 
         case 4:
+            console.clear();
             logger(`===========================`);
             logger(`LIST PRODUCERS`);
             logger(`===========================`);
             producerRegistry.listItems();
+            question(`Press ENTER to continue...`);
             break;
 
         case 5:
+            console.clear();
             logger(`===========================`);
             logger(`LIST INSTITUTIONS`);
             logger(`===========================`);
             institutionRegistry.listItems();
+            question(`Press ENTER to continue...`);
             break;
 
         case 6:
+            console.clear();
             logger(`===========================`);
             logger(`LIST FOODS`);
             logger(`===========================`);
             foodRegistry.listItems();
+            question(`Press ENTER to continue...`);
+            break;
+
+        case 7:
+            console.clear();
+            logger(`===========================`);
+            logger(`MAKE DONATION`);
+            logger(`===========================`);
+           
+                const donationFoodName = question(`Enter the name of the food to donate: `);
+                const donationQuantity = Number(question(`Enter the quantity to donate (in kg): `));
+                const donationInstitutionName = question(`Enter the name of the institution to donate to: `);
+                try {
+                const donationFood = foodRegistry.findByName(foodRegistry['items'], donationFoodName);
+                const donationInstitution = institutionRegistry.findByName(institutionRegistry['items'], donationInstitutionName);
+                } catch (error) {
+                    if (error instanceof Error) {
+                    logger(`Error: ${error.message}`);
+                    question(`Press ENTER to continue...`);
+                    break;
+                }
+            }
+
+        case 0:
+            logger(`Exiting the program...`);
             break;
     }
 

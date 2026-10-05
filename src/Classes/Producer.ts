@@ -10,6 +10,10 @@ export abstract class Producer {
         this.food = food;
     }
 
+    public toString(): string {
+        return `Name: ${this.name}, CPF: ${this.CPF}, Food: ${this.food}`;
+    }
+
     // Getter and Setter for name
     public getName(): string {
         return this.name;

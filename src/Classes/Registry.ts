@@ -18,13 +18,13 @@ export class Registry<T> {
         }
     }
 
-    public findByName<T extends { getName(): string }>(items: T[], name: string): void {
+    public findByName<T extends { getName(): string }>(items: T[], name: string): T {
         const item = items.find(item => item.getName() === name);
-        if (item) {
-            logger(`The item ${name} appears in the records.`);
-        } else {
-            logger(`The item ${name} does not appear in the records.`);
+        if (!item) {
+
+            throw new Error(`The item ${name} does not appear in the records.`);
         }
+        return item;
     }
 
 }
